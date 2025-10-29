@@ -1,0 +1,41 @@
+
+
+:root{
+    --negro: #000000;
+    --azul: #14213D;
+    --amarillo: #fca311;
+    --gris : #e5e5e5;
+    --blanco: #fff;
+}
+.container-fluid {
+    background-color: var(--blanco);
+}
+.container-fluid  > .navbar-brand  img {
+    width: 2.8rem ;
+}
+.nav-item .nav-link{
+    font-weight: bold;
+    color:  var(--azul);
+    box-sizing: border-box;
+    border: 3px solid var(--amarillo);
+    margin: 5px;
+    border-radius: 10px;
+}
+.nav-item .nav-link:hover{
+    font-size: large;
+}
+#botonLoginRegister{
+    font-weight: bold;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    border: 3px solid var(--amarillo);
+    border-radius: 10px;
+    color: #14213D;
+    background-color: var(--blanco);
+}
+#botonLoginRegister:hover{
+    font-size: large;
+}
+body{
+    background-color: var(--gris);
+}

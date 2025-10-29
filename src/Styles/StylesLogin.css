@@ -1,0 +1,14 @@
+:root{
+    --negro: #000000;
+    --azul: #14213D;
+    --amarillo: #fca311;
+    --gris : #e5e5e5;
+    --blanco: #fff;
+}
+header{
+    background-color: var(--gris);
+   
+}
+header  a img{
+    width: 2.8rem ;
+}
