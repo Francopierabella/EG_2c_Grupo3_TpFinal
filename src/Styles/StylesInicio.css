@@ -7,6 +7,10 @@
     --gris : #e5e5e5;
     --blanco: #fff;
 }
+*{
+    font-family: sans-serif;
+    font-weight: bold;
+}
 .container-fluid {
     background-color: var(--blanco);
 }
@@ -22,9 +26,11 @@
     border-radius: 10px;
 }
 .nav-item .nav-link:hover{
-    font-size: large;
+    text-decoration: underline;
+    background-color: #14213D;
+    color: var(--amarillo)
 }
-#botonLoginRegister{
+#botonLogin{
     font-weight: bold;
     padding: 8px 12px;
     box-sizing: border-box;
@@ -33,9 +39,19 @@
     color: #14213D;
     background-color: var(--blanco);
 }
-#botonLoginRegister:hover{
-    font-size: large;
+#botonLogin:hover{
+    text-decoration: underline;
+    background-color: #14213D;
+    color: var(--amarillo)
 }
-body{
-    background-color: var(--gris);
+main{
+    background-color: var(--azul);
+}
+.carousel-inner img {
+    height: 500px; /* altura deseada */
+    object-fit: cover; /* mantiene proporción y recorta si es necesario */
+}
+.carousel-caption{
+    font-weight: bolder;
+    font-size: 1.8rem;
 }

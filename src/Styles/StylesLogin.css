@@ -1,14 +1,84 @@
 :root{
     --negro: #000000;
-    --azul: #14213D;
+    --azul: #274179;
     --amarillo: #fca311;
     --gris : #e5e5e5;
     --blanco: #fff;
 }
+*{
+    font-family: Arial, sans-serif;
+}
 header{
-    background-color: var(--gris);
-   
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 header  a img{
     width: 2.8rem ;
+}
+header > h2{
+    color: var(--azul);
+    text-decoration: underline;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--azul);
+}
+.login-container {
+  background-color: var(--gris);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--amarillo);
+  margin: 40px auto;
+  width: 50%;
+  height: 400px;
+}
+.login-container > h2 {
+    color: var(--azul);
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 50px;
+
+}
+.login-container > form{
+    text-align: center;
+}
+.login-container > form > .form-group {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;    
+}
+.login-container > form > .form-group > label{
+    color: var(--azul);
+    font-weight: bold; 
+}
+.login-container > form > .form-group > input{
+    padding: 8px;
+    border: 2px solid var(--azul);
+    border-radius: 5px;
+    width: 250px;
+}
+
+.login-container > form > button {
+    background-color: var(--azul);
+    color: var(--blanco);
+    border-radius: 10px;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.login-container > form > button:hover {
+background-color: #152342;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
 }

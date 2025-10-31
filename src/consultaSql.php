@@ -1,11 +1,10 @@
 <?php
 
+function consultaSql($consulta){
+    $conexion = mysqli_connect("localhost","root","","onixcenter");
+    $resultadoConsulta = mysqli_query($conexion,$consulta);
+    mysqli_close($conexion);
+    return $resultadoConsulta;
+}
 
-$conexion = mysqli_connect("localhost","root","","onixcenter");
-if($conexion->connect_error){
-    echo "<h1> Adasdasd </h1>";
-}
-else {
-    echo "<h1> OHOHOHOHOHO </h1>";
-}
 ?>

@@ -1,0 +1,125 @@
+
+:root{
+    --negro: #000000;
+    --azul: #274179;
+    --amarillo: #fca311;
+    --gris : #e5e5e5;
+    --blanco: #fff;
+}
+*{
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.container-fluid {
+    background-color: var(--blanco);
+}
+.container-fluid  > a > img {
+    width: 2.8rem ;
+}
+.nav-item .nav-link{
+    font-weight: bold;
+    color:  var(--azul);
+    box-sizing: border-box;
+    border: 3px solid var(--amarillo);
+    margin: 5px;
+    border-radius: 10px;
+}
+.nav-item .nav-link:hover{
+    text-decoration: underline;
+    background-color: #14213D;
+    color: var(--amarillo)
+}
+#botonLogin{
+    font-weight: bold;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    border: 3px solid var(--amarillo);
+    border-radius: 10px;
+    color: #14213D;
+    background-color: var(--blanco);
+}
+#botonLogin:hover{
+    text-decoration: underline;
+    background-color: #14213D;
+    color: var(--amarillo)
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--azul);
+}
+main{
+    background-color: var(--gris);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    border: solid 3px var(--amarillo);
+    width: 50%;
+}
+main h2{
+    color: var(--azul);
+    text-decoration: underline;
+    margin-bottom: 1rem;
+}
+.contacto-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto;
+}
+.contacto-container > form{
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+}
+.form-group label{
+    color: var(--azul);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.form-group input{
+    padding: 8px;
+    border: 2px solid var(--azul);
+    border-radius: 5px;
+    width: 250px;
+}
+.form-group > select{
+    padding: 8px;
+    border: 2px solid var(--azul);
+    border-radius: 5px;
+    width: 270px;
+}
+.contacto-container button {
+    background-color: var(--azul);
+    color: var(--blanco);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.contacto-container button:hover{
+    background-color: #152342;
+    transform: scale(1.05);
+}
+.mensaje{
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+.mensaje label{
+    color: var(--azul);
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-right: 10px;
+}
+.mensaje textarea{
+    width: 250px;
+}
