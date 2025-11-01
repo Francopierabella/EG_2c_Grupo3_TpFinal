@@ -23,27 +23,26 @@ body {
     padding: 0;
     background-color: var(--azul);
 }
-main{
-    background-color: var(--gris);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 40px auto;
-    border: solid 3px var(--amarillo);
-    width: 50%;
-}
+
 main h2{
-    color: var(--azul);
+    color: var(--blanco);
     text-decoration: underline;
     margin-bottom: 1rem;
+    text-align: center;
 }
 .register-container{
+    background-color: var(--gris);
+    border: solid 5px var(--amarillo);
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    margin: 40px auto;
+    align-items: center;
+    width: 100%;               /* ocupa el 90% del ancho del viewport */
+    max-width: 500px;         /* no crece más allá de 500px */
+    margin: 20px auto;           /* centrado horizontal */
+    padding: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
 }
 .register-container > form{
     text-align: center;

@@ -11,6 +11,12 @@
     font-family: sans-serif;
     font-weight: bold;
 }
+body{
+
+    margin: 0;
+    padding: 0;
+}
+
 .container-fluid {
     background-color: var(--blanco);
 }
@@ -44,14 +50,85 @@
     background-color: #14213D;
     color: var(--amarillo)
 }
-main{
-    background-color: var(--azul);
+
+#linkNov{
+    color: var(--blanco);
+}
+#carousel{
+    background-color: var( --azul);
+    padding: 30px 0;
+    height: 90vh;
+
 }
 .carousel-inner img {
-    height: 500px; /* altura deseada */
-    object-fit: cover; /* mantiene proporción y recorta si es necesario */
+    margin-top: 20px;
+    height: 500px; 
+    object-fit: cover; 
 }
 .carousel-caption{
     font-weight: bolder;
     font-size: 1.8rem;
+}
+#novedades{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+#novedades , #novedades > .container-fluid{
+    background-color: var(--gris);
+}
+#novedades > .container-fluid{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    background-color: var(--amarillo);
+    color: var(--negro);
+    margin: 20px;
+
+}
+footer{
+    background-color: var(--negro);
+    color: white;
+}
+footer > .container-footer{
+    display: flex;
+    padding-top: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+iframe{
+    height: 30%;
+    border: 3px solid var(--amarillo);
+    margin: 10px;
+}
+
+footer >.container-footer > .enlaces > p{
+    color: var(--blanco);
+}
+footer > .container-footer > .redes-sociales{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    background-color: white;
+    border: 5px solid var(--amarillo);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+footer > .container-footer > .redes-sociales > .redes{
+    display: flex;
+}
+footer > .container-footer > .redes-sociales > .redes > a > img{
+    width: 50px;
+}
+footer > .container-footer > .redes-sociales > h3{
+    color: black;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: sans-serif;
 }

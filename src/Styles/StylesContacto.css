@@ -49,26 +49,28 @@ body{
     padding: 0;
     background-color: var(--azul);
 }
-main{
+
+
+main h2{
+    color: var(--blanco);
+    text-decoration: underline;
+    margin: 1rem;
+    text-align: center;
+}
+.contacto-container{
+    border: solid 5px var(--amarillo);
     background-color: var(--gris);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 40px auto;
-    border: solid 3px var(--amarillo);
-    width: 50%;
-}
-main h2{
-    color: var(--azul);
-    text-decoration: underline;
-    margin-bottom: 1rem;
-}
-.contacto-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 40px auto;
+    width: 100%;               /* ocupa el 90% del ancho del viewport */
+    max-width: 500px;         /* no crece más allá de 500px */
+    margin: 0 auto;           /* centrado horizontal */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 .contacto-container > form{
     text-align: center;
@@ -76,25 +78,28 @@ main h2{
 .form-group {
     margin-bottom: 40px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;  
+    justify-content: center;
+    align-items: center; 
+    box-sizing: border-box; 
+
+
 }
 .form-group label{
     color: var(--azul);
     font-weight: bold;
     margin-bottom: 10px;
+    display: block;
+    word-wrap: break-word;
 }
 .form-group input{
+    display: block;
+    margin-bottom: 15px;
     padding: 8px;
     border: 2px solid var(--azul);
     border-radius: 5px;
-    width: 250px;
-}
-.form-group > select{
-    padding: 8px;
-    border: 2px solid var(--azul);
-    border-radius: 5px;
-    width: 270px;
+    width: 100% ;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 .contacto-container button {
     background-color: var(--azul);

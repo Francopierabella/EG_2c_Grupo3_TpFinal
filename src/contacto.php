@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="./Styles/StylesContacto.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="./Styles/StylesContacto.css?v=1.0">
+    <title>Contacto</title>
 </head>
 <body>
 <header>
   <nav class="navbar navbar-expand-md bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="../assets/oh.png" alt=""></a>
+      <a class="navbar-brand" href="inicio.php"><img src="../assets/oh.png" alt="Logo Shopping / Boton Home"></a>
 
       <!-- Botón hamburguesa -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,8 +63,8 @@
 </header>
 
 <main>
-        <h2>Envia consultas al adminsitrador</h2>
-       <div class="contacto-container">
+  <div class="contacto-container">
+         <h2>Envia consultas al adminsitrador</h2>
                 <form action="" method="post">
                     <div class="form-group">
                         <label for="email">Email: </label>
