@@ -9,6 +9,21 @@
     font-family: Arial, sans-serif;
 }
 
+header
+{
+    background-color: var(--amarillo);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+header h2{
+    color: var(--azul);
+    text-decoration: underline;
+}
+header a img{
+    width: 2.8rem;
+}
 body {
     margin: 0;
     padding: 0;
@@ -28,9 +43,9 @@ main h2{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;               /* ocupa el 90% del ancho del viewport */
-    max-width: 500px;         /* no crece más allá de 500px */
-    margin: 20px auto;           /* centrado horizontal */
+    width: 100%;              
+    max-width: 500px;        
+    margin: 20px auto;         
     padding: 20px;
     border-radius: 10px;
     box-sizing: border-box;

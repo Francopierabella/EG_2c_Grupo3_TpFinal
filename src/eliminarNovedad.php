@@ -3,6 +3,16 @@ session_start();
 include "consultaSql.php";
 
 ?>
+ <?php 
+if(isset($_POST['eliminar']) && isset($_POST['codigo'])){
+     $codigoNovedad = $_POST['codigo'];
+    $consulta = "DELETE FROM novedades WHERE codigo = '$codigoNovedad' LIMIT 1";
+    $resConsultaDelete = consultaSql($consulta);
+    header("Location: eliminarNovedad.php");
+    exit();
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,13 +108,7 @@ include "consultaSql.php";
     <?php }?>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-                    <?php 
-                    if(isset($_POST['eliminar']) && isset($_POST['codigo'])){
-                        $codigoNovedad = $_POST['codigo'];
-                        $consulta = "DELETE FROM novedades WHERE codigo = '$codigoNovedad' LIMIT 1";
-                        $resConsultaDelete = consultaSql($consulta);
-                    }
-                    ?>
+                   
 
 </body>
 </html>

@@ -115,19 +115,24 @@ include "consultaSql.php";
                         <td><?= $fila['codigoLocal']?></td>
                         <td>
                             <form action="" method="post">
+                                <input type="hidden" name="idPromo" value="<?php echo $promo['codigoPromo']; ?>">
                                 <button type="submit" name="aprobar" id="aprobar">✅</button>
                                 <button type="submit" name="rechazar" id="rechazar">❌</button>
                             </form>
                         </td>
                         <?php 
                         if(isset($_POST['aprobar'])){
-                            $promoAprobar = $fila['codigoPromo'];
-                            $consulta = "UPDATE promociones SET confirmado = '1' WHERE codigoPromo = '$promoAprobar'";
+                            $promoAprobar = $_POST['idPromo'];
+                            $consulta = "UPDATE promociones SET confirmado = 1 WHERE codigoPromo = '$promoAprobar'";
                             $resConsulta = consultaSql($consulta);
+                            header("Location: perfilAdministrador.php");
+                            exit();
                         }elseif(isset($_POST['rechazar'])){
-                            $promoEliminar = $fila['codigoPromo'];
+                            $promoEliminar = $_POST['idPromo'];
                             $consulta = "DELETE FROM promociones WHERE codigoPromo = '$promoEliminar'";
                             $resConsulta = consultaSql($consulta);
+                            header("Location: perfilAdministrador.php");
+                            exit();
                         }
                         ?>
                     </tr>

@@ -84,6 +84,8 @@ thead > tr {
     background-color: var(--negro);
     color: var(--blanco);
     border: 3px solid black;
+    font-size: 1.5vw;
+
 
 }
 thead > tr > th{
@@ -95,6 +97,8 @@ td{
     background-color: white;
     border: 3px solid black;
     text-align: center;
+    font-size: 1.5vw;
+
 }
 form > button{
     border-radius: 100%;

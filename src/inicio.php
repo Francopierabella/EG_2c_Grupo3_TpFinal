@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="Styles/StylesInicio.css">
+    <link rel="stylesheet" href="Styles/StylesInicio.css?v=1.0">
     <link rel="stylesheet" href="Styles/StylesHeader.css?v=1.0">
     <link rel="stylesheet" href="Styles/StylesFooter.css?v=1.0">
     <title>Inicio</title>
@@ -147,10 +147,10 @@
             $resul = consultaSql($novedades); 
             ?>
           <section id="novedades">
-            <div class="container-fluid novedades" >
-              <?php
+            <?php
             if (mysqli_num_rows($resul) > 0){
               echo "<h1 style='color: black; text-align: center; margin: 10px;'>¡Las mejores novedades para vos!</h1>";
+              echo '<div class="container-fluid novedades" >';
               while($novedad = mysqli_fetch_assoc($resul)){
                 ?>
                   <div class="card" style="width: 18rem; height: 15rem;">

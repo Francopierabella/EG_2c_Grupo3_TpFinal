@@ -34,7 +34,7 @@ body{
 #carousel{
     background-color: var( --azul);
     padding: 30px 0;
-    height: 90vh;
+    height: 100vh;
 
 }
 .carousel-inner img {
@@ -51,6 +51,7 @@ body{
     flex-direction: column;
     height: 100%;
 }
+
 #novedades , #novedades > .container-fluid{
     background-color: var(--gris);
 }
@@ -61,10 +62,21 @@ body{
     justify-content: center;
 }
 .card{
-    background-color: var(--amarillo);
+    background-color: var(--azul);
     color: var(--negro);
     margin: 20px;
-
+    box-sizing: border-box;
+}
+.card-title{
+    text-align: center;
+    color: var(--amarillo);
+    text-decoration: underline;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px;
+    text-transform: capitalize;
+}
+.card-text{
+    color: var(--blanco);
 }
 
 

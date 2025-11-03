@@ -8,7 +8,7 @@ include "consultaSql.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="Styles/StylesPromociones.css?v=1.0">
+    <link rel="stylesheet" href="Styles/StylesPromociones.css">
     <link rel="stylesheet" href="Styles/StylesHeader.css?v=1.0">
     <link rel="stylesheet" href="Styles/StylesFooter.css?v=1.0">
     <title>Promociones</title>
@@ -176,79 +176,76 @@ include "consultaSql.php";
                     $idDueño = $usuario['idUsuario'];
                     $consulta = "SELECT * FROM locales WHERE codUsuario = '$idDueño'";
                     $resulLocales = consultaSql($consulta);
-                    $fila = mysqli_fetch_assoc($resulLocales);
-                    $local = $fila['codigoLocal'];
-                    $consulta = "SELECT * FROM promociones WHERE codigoLocal = '$local'";
-                    $resul = consultaSql($consulta);
-                    $cantPromos = mysqli_num_rows($resul);
-                    if($cantPromos == 0){
-                        echo "<h1> No hay promociones!</h1>";
-                        echo "<br>";
-                        echo "<a href='crearPromocion.php' id='crearPromocion' >Crear promocion</a>";
-                    }
-                    else{
-                        ?>
-                        <h1>Promociones de tus Locales</h1>
-                        <table>
-                            <thead>
-                             <tr>
-                               <th scope="col">CodigoPromocion</th>
-                               <th scope="col">Descripcion</th>
-                               <th scope="col">Valida hasta</th>
-                               <th scope="col" id="ult">Dias que aplica</th>
-                               <th scope="col">Eliminar</th>
+                    $filas = mysqli_num_rows($resulLocales);
+                    if($filas == 0){
+                      echo "<h1 style='margin: 100px auto; text-align: center;color: var(--blanco); text-decoration: underline;'> 
+                        No tienes Locales!";
+                      }else{?>
+                      <h1>Promociones de tus Locales</h1>
+                      <table>
+                          <thead>
+                           <tr>
+                             <th scope="col">CodigoPromocion</th>
+                             <th scope="col">Descripcion</th>
+                             <th scope="col">Valida hasta</th>
+                             <th scope="col" id="ult">Dias que aplica</th>
+                             <th scope="col">Eliminar</th>
 
-    
-                             </tr>
-                           </thead>
+  
+                           </tr>
+                         </thead>
+                     <?php while($fila = mysqli_fetch_assoc($resulLocales)){
+                          $local = $fila['codigoLocal'];
+                          $consulta = "SELECT * FROM promociones WHERE codigoLocal = '$local' AND confirmado = 1";
+                          $resul = consultaSql($consulta);
+                          $cantPromos = mysqli_num_rows($resul);
+                          if($cantPromos != 0){
+                           ?>
                            <?php 
-                            // $idDueño = $usuario['idUsuario'];
-                            // $consulta = "SELECT * FROM locales WHERE codUsuario = '$idDueño'";
-                            // $resulLocales = consultaSql($consulta);
-                            mysqli_data_seek($resulLocales, 0);
-                           while($promocion = mysqli_fetch_assoc($resulLocales)){
-                            $codigoLocal = $promocion['codigoLocal'];
-                            $consulta = "SELECT * FROM promociones WHERE codigoLocal = '$codigoLocal' ";
-                            $resu = consultaSql($consulta);
-                            $promo = mysqli_fetch_assoc($resu);
 
-                               ?>
-                                <tr>
-                                    <td><?= $promo["codigoPromo"] ?></td>
-                                    <td><?= $promo["texto"] ?></td>
-                                    <td><?= $promo["fechaHasta"]?></td>
-                                    <td><?php $dias = explode(',', $promo['diaSemana']); 
-                                                    $nombresDias = [
-                                                            '0' => 'Domingo',
-                                                            '1' => 'Lunes',
-                                                            '2' => 'Martes',
-                                                            '3' => 'Miércoles',
-                                                            '4' => 'Jueves',
-                                                            '5' => 'Viernes',
-                                                            '6' => 'Sábado'
-                                                    ];
-                                                        $diasTexto = array_map(fn($d) => $nombresDias[$d], $dias);
-    
-                                            // los unimos con coma o guion
-                                            echo implode(', ', $diasTexto);?></td>
-                                            <td> <form action="" method="post">
-                                            <button type="submit" name="eliminar">❌</button>
-                                        </form></td>
-                                </tr>   
-                                    
-                                <?php }?>
+                           while($promo = mysqli_fetch_assoc($resul)){
+                              ?>
+                            <tr>
+                                <td><?= $promo["codigoPromo"] ?></td>
+                                <td><?= $promo["texto"] ?></td>
+                                <td><?= $promo["fechaHasta"]?></td>
+                                <td><?php $dias = explode(',', $promo['diaSemana']); 
+                                                $nombresDias = [
+                                                        '0' => 'Domingo',
+                                                        '1' => 'Lunes',
+                                                        '2' => 'Martes',
+                                                        '3' => 'Miércoles',
+                                                        '4' => 'Jueves',
+                                                        '5' => 'Viernes',
+                                                        '6' => 'Sábado'
+                                                ];
+                                                    $diasTexto = array_map(fn($d) => $nombresDias[$d], $dias);
+
+                                        // los unimos con coma o guion
+                                        echo implode(', ', $diasTexto);?></td>
+                                        <td> <form action="" method="post">
+                                        <input type="hidden" name="idPromo" value="<?php echo $promo['codigoPromo']; ?>">
+                                        <button type="submit" name="eliminar">❌</button>
+                                    </form></td>
+                            </tr>   
+                                
+                             <?php }?>
+
+                                <?php }}?>
                                         <?php 
                                         if(isset($_POST['eliminar'])){
-                                            $codPromo = $promo["codigoPromo"];
+                                            $codPromo = $_POST['idPromo'];
                                             $fechaUso = date('Y/m/d');
                                             $consulta = "DELETE FROM promociones WHERE codigoPromo = '$codPromo'";
                                             $resConsulta = consultaSql($consulta);
                                             header("Location: promociones.php");
+                                            exit();
                                         }
                                         ?>
                               </table>
                               <a href="crearPromocion.php" id="crearPromocion">Crear promocion</a>
-                 <?php }}else{
+                 <?php }}
+                    else{
                   $consulta = "SELECT * FROM promociones";
                   $resConsulta = consultaSql($consulta);
                   $cantPromos = mysqli_num_rows($resConsulta);

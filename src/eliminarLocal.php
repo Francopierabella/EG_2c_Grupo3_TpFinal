@@ -2,6 +2,16 @@
 session_start();
 include "consultaSql.php";
 ?>
+<?php 
+if(isset($_POST['eliminar'])){
+    $codigoLocal = $_POST['idLocal'];
+    $consulta = "DELETE FROM locales WHERE codigoLocal = '$codigoLocal'";
+    $resConsultaDelete = consultaSql($consulta);
+    header("Location: eliminarLocal.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,6 +98,7 @@ include "consultaSql.php";
                         <td><?= $fila['codUsuario']?></td>
                         <td>
                             <form action="" method="post">
+                                <input type="hidden" name="idLocal" value="<?php echo $fila['codigoLocal']; ?>">
                                 <button type="submit" name="eliminar" id="eliminar" >❌</button>
                             </form>
                         </td>
@@ -97,15 +108,7 @@ include "consultaSql.php";
     <?php }?>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-                    <?php 
-                    if(isset($_POST['eliminar'])){
-                        $codigoLocal = $fila['codigoLocal'];
-                        $consulta = "DELETE FROM locales WHERE codigoLocal = '$codigoLocal'";
-                        $resConsultaDelete = consultaSql($consulta);
-                        header("Location: eliminarLocal.php");
-                    }
-                    ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>         
     
 </body>
 </html>
