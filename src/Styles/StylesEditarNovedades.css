@@ -1,0 +1,60 @@
+:root{
+    --negro: #000000;
+    --azul: #274179;
+    --amarillo: #fca311;
+    --gris : #e5e5e5;
+    --blanco: #fff;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--azul);
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+main > h1{
+    text-align: center;
+    margin: 20px auto;
+    color: var(--blanco);
+    text-decoration: underline;
+    font-size: 5vw;
+}
+main > form{
+
+    background-color: var(--gris);
+    border: 5px solid var(--amarillo);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    height: 90vh;
+    box-sizing: border-box;
+}
+main > form > label {
+
+    padding: 15px;
+    text-align: center;
+}
+main > form > input{
+    width: 30vw;
+    border-radius: 5px;
+}
+main > form > button{
+    margin: 20px auto;
+    padding: 10px;
+    color: var(--negro);
+    border: 3px solid var(--amarillo);
+    border-radius: 20px;
+    background-color: var(--blanco);
+}
+main > form > button:hover{
+    background-color: var(--azul) ;
+    color: var(--amarillo); 
+    text-decoration: underline;
+}

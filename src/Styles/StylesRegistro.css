@@ -8,16 +8,7 @@
 *{
     font-family: Arial, sans-serif;
 }
-header{
-    background-color: var(--amarillo);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-header img{
-    width: 2.8rem;
-}
+
 body {
     margin: 0;
     padding: 0;

@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="Styles/StylesSobreNosotros.css">
+    <link rel="stylesheet" href="Styles/StylesSobreNosotros.css?v=1.0">
+    <link rel="stylesheet" href="Styles/StylesHeader.css?v=1.0">
+    <link rel="stylesheet" href="Styles/StylesFooter.css?v=1.0">
+
     <title>Sobre Nosotros</title>
 </head>
 <body>
@@ -96,6 +99,36 @@
             </p>
         </div>
     </main>
+<footer>
+  <div class="container-footer">
+    <div class="footer-section contacto">
+      <p>Realiza la consulta que quieras <a href="contacto.php">AQUÍ</a></p>
+    </div>
+
+    <div class="footer-section redes-sociales">
+      <h3>¡Síguenos en nuestras redes sociales!</h3>
+      <div class="redes">
+        <a href="https://www.instagram.com/altorosario/">Instagram</a>
+        <a href="https://www.facebook.com/">Facebook</a>
+        <a href="https://x.com/home">Twitter / X</a>
+      </div>
+    </div>
+
+    <div class="footer-section mapa">
+      <h3>¡Encuéntranos aquí!</h3>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1674.44573035326!2d-60.669001699999995!3d-32.9274658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b654abc3ab1d5f%3A0x2f90ce97db2c5a6!2sAlto%20Rosario%20Shopping!5e0!3m2!1ses!2sar!4v1761943659459!5m2!1ses!2sar"  
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Todos los derechos reservados</p>
+    </div>
+  </div>
+</footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 </body>

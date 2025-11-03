@@ -3,12 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="Styles/StylesRegistro.css?v=1.0">
+        <link rel="stylesheet" href="Styles/StylesRegistro.css">
         <title>Regístrate</title>
     </head>
     <body>
         <header>
-            <a href="inicio.php"><img src="../assets/oh.png" alt=""></a>
+            <a href="inicio.php"><img src="../assets/oh.png" alt="Boton Home"></a>
             <h2>ONIX CENTER</h2>
         </header>
         <main>
@@ -132,7 +132,7 @@
                     // Enviar correo
                     $mail->send();
                     echo "<h3 class='success-message' style='color: white; text-align: center; margin-top: 20px; font-weight: bold;
-                    text-decoration: underline;'>Registro exitoso. Revisa tu correo para confirmar tu cuenta.</h3>";
+                    text-decoration: underline;'>Registro exitoso. Espera a que el administrador te acepte.</h3>";
 
                 } catch (Exception $e) {
                     echo "<h3 class='error-message'>No se pudo enviar el correo. Error: {$mail->ErrorInfo}</h3>";

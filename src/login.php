@@ -30,15 +30,17 @@
         </div>
     </main>
     <?php 
+    include "consultaSql.php";
     session_start();
     if (isset($_POST['username'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $conexion = mysqli_connect("Localhost", "root", "", "onixcenter");
         $consulta = "SELECT * FROM usuarios WHERE nombreUsuario = '$username' AND claveUsuario = '$password'";
-        $resultado = mysqli_query($conexion, $consulta);
-        $filas = mysqli_num_rows($resultado);
+        $resConsulta = consultaSql($consulta);
+        $filas = mysqli_num_rows($resConsulta);
         if($filas){
+            $fila = mysqli_fetch_assoc($resConsulta);
+            $_SESSION['id'] = $fila['idUsuario'];
             $_SESSION['usuario'] = $username;
             header("location: inicio.php");
         } else {

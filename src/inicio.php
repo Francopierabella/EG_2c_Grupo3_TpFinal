@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="Styles/StylesInicio.css?v=1.0">
+    <link rel="stylesheet" href="Styles/StylesInicio.css">
+    <link rel="stylesheet" href="Styles/StylesHeader.css?v=1.0">
+    <link rel="stylesheet" href="Styles/StylesFooter.css?v=1.0">
     <title>Inicio</title>
   </head>
   <body>
@@ -85,26 +87,35 @@
   </nav>
 </header>
 <section id="carousel">
-    <a href="#novedades" id="linkNov">Ver Novedades</a>
+
+  <?php   if(isset($_SESSION['usuario'])){
+      $usuario = $_SESSION['usuario'];
+      $consultaUsuario = "SELECT * FROM usuarios WHERE  nombreUsuario = '$usuario'";
+      $res = consultaSql($consultaUsuario);
+      $fila = mysqli_fetch_assoc($res);
+      if($fila['tipoUsuario'] == 'cliente'){
+
+        echo '<a href="#novedades" id="linkNov">Ver Novedades</a>'; }
+      }?>
     <div class="w-75 mx-auto">
       <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="../assets/InteriorShopping1.jpeg" class="d-block w-100" alt="...">
+            <img src="../assets/InteriorShopping1.jpeg" class="d-block w-100" alt="Imagen del shopping">
             <div class="carousel-caption" id="first">
                 <h5>Bienvenido a nuestro Shopping</h5>
                 <p>Disfrutá de nuestras tiendas y promociones</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="../assets/imagenShopping.jpg" class="d-block w-100" alt="...">
+            <img src="../assets/imagenShopping.jpg" class="d-block w-100" alt="Otra imagen el shopping">
             <div class="carousel-caption" id="second">
               <h5>Visita nuestras tiendas</h5>
               <p>Ofertas exclusivas todos los días</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="../assets/InteriorShopping.jpeg" class="d-block w-100" alt="...">
+            <img src="../assets/InteriorShopping.jpeg" class="d-block w-100" alt="Otra imagen el shopping">
             <div class="carousel-caption" id="third">
               <h5>Disfrutá de la experiencia</h5>
               <p>Ambiente moderno y cómodo para vos</p>
@@ -136,10 +147,10 @@
             $resul = consultaSql($novedades); 
             ?>
           <section id="novedades">
-            <h1 style='color: black; text-align: center; margin: 10px;'>¡Las mejores novedades para vos!</h1>
             <div class="container-fluid novedades" >
-            <?php
+              <?php
             if (mysqli_num_rows($resul) > 0){
+              echo "<h1 style='color: black; text-align: center; margin: 10px;'>¡Las mejores novedades para vos!</h1>";
               while($novedad = mysqli_fetch_assoc($resul)){
                 ?>
                   <div class="card" style="width: 18rem; height: 15rem;">
@@ -214,21 +225,34 @@
 
 <footer>
   <div class="container-footer">
-    <p>Realiza la consulta que quieras <a href="contacto.php">Aquí</a></p>
-    <div class="redes-sociales">
-      <h3>¡Siguenos en nuestras redes sociales!</h3>
-      <div class="redes">
+    <div class="footer-section contacto">
+      <p>Realiza la consulta que quieras <a href="contacto.php">AQUÍ</a></p>
+      <a href="#carousel" class="btn-subir">↑ Subir</a>
+    </div>
 
-        <a href=""><img src="../assets/Instagram.png" alt=""></a>
-        <a href=""><img src="../assets/face.png" alt=""></a>
-        <a href=""><img src="../assets/Twitter.png" alt=""></a>
+    <div class="footer-section redes-sociales">
+      <h3>¡Síguenos en nuestras redes sociales!</h3>
+      <div class="redes">
+        <a href="https://www.instagram.com/altorosario/">Instagram</a>
+        <a href="https://www.facebook.com/">Facebook</a>
+        <a href="https://x.com/home">Twitter / X</a>
       </div>
     </div>
+
+    <div class="footer-section mapa">
+      <h3>¡Encuéntranos aquí!</h3>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1674.44573035326!2d-60.669001699999995!3d-32.9274658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b654abc3ab1d5f%3A0x2f90ce97db2c5a6!2sAlto%20Rosario%20Shopping!5e0!3m2!1ses!2sar!4v1761943659459!5m2!1ses!2sar"  
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Todos los derechos reservados</p>
+    </div>
   </div>
-  <a href="#carousel">Subir</a>
-  <p>Encuentranos aqui!</p>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1674.44573035326!2d-60.669001699999995!3d-32.9274658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b654abc3ab1d5f%3A0x2f90ce97db2c5a6!2sAlto%20Rosario%20Shopping!5e0!3m2!1ses!2sar!4v1761943659459!5m2!1ses!2sar"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-<p style="color:white;">&copy; Todos los derechos reservados</p>
 </footer>
 
 

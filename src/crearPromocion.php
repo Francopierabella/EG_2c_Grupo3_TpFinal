@@ -1,19 +1,19 @@
 <?php 
 session_start();
-include "consultaSql.php";
+include "consultaSql.php"
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=}, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="Styles/StylesPerfilCliente.css">
+    <link rel="stylesheet" href="Styles/StylesCrearPromocion.css">
     <link rel="stylesheet" href="Styles/StylesHeader.css?v=1.0">
-    <title>Tu Perfil</title>
+    <title>Crear Promocion</title>
 </head>
 <body>
-<header>
+    <header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid header">
           <a class="navbar-brand" href="inicio.php"><img src="../assets/oh.png" alt=""></a>
@@ -41,6 +41,7 @@ include "consultaSql.php";
         </ul>
         <div class="d-none d-sm-flex ms-auto">
           <?php 
+
           if (!isset($_SESSION ['usuario'])){
             echo '<a href="login.php" class="btn btn-outline-primary me-2" id="botonLogin">Iniciar Sesion</a>';
           }
@@ -52,7 +53,7 @@ include "consultaSql.php";
               $filaUsuario = mysqli_fetch_assoc($resConsulta);
               if ($filaUsuario['tipoUsuario'] == 'cliente'){
                 echo '<a href="perfilCliente.php" class="btn btn-outline-primary me-2" id="botonLogin">Perfil</a>'; 
-              }else if($filaUsuario['tipoUsuario'] == 'dueño'){
+              }elseif($filaUsuario['tipoUsuario'] == 'dueño'){
                 echo '<a href="perfilDueño.php" class="btn btn-outline-primary me-2" id="botonLogin" >Perfil</a>'; 
               }else{
                 echo '<a href="perfilAdministrador.php" class="btn btn-outline-primary me-2" id="botonLogin" >Perfil</a>'; 
@@ -70,76 +71,79 @@ include "consultaSql.php";
             echo '<a href="login.php" class="btn btn-outline-primary me-2" id="botonLogin">Iniciar Sesion</a>';
           }
           else{
-            echo '<a href="cerrarSesion.php" class="btn btn-outline-primary me-2" id="botonLogin" >Cerrar sesion </a>';
-            echo '<a href="perfilCliente.php" class="btn btn-outline-primary me-2" id="botonLogin">Perfil</a>'; 
-            $usuarioLogueado = $_SESSION['usuario'];
-            $consultaBDUsuario = "SELECT * FROM usuarios WHERE nombreUsuario = '$usuarioLogueado'";
-            $resConsulta = consultaSql($consultaBDUsuario);
-            if($resConsulta){
-              $filaUsuario = mysqli_fetch_assoc($resConsulta);
-              if ($filaUsuario['tipoUsuario'] == 'cliente'){
-              }else if($filaUsuario['tipoUsuario'] == 'dueño'){
+            if ($filaUsuario['tipoUsuario'] == 'cliente'){
+            }elseif($filaUsuario['tipoUsuario'] == 'dueño'){
               echo '<a href="perfilDueño.php" class="btn btn-outline-primary me-2" id="botonLogin" >Perfil</a>'; 
-              }else{
+            }else{
               echo '<a href="perfilAdministrador.php" class="btn btn-outline-primary me-2" id="botonLogin" >Perfil</a>'; 
             }
+            echo '<a href="cerrarSesion.php" class="btn btn-outline-primary me-2" id="botonLogin" >Cerrar sesion </a>';
 
             }
-            else{
-              echo "<h1> ERROR EN CONSULTA</h1>";
-            }
-
-          }
+          
           ?>
         </div>
       </div>
     </div>
   </nav>
 </header>
-<section class="datosCliente">
-    <h1>Datos personales </h1>
-    <div class="datos">
-          <?php 
-          $usuario = $_SESSION['usuario'];
-          $consulta = "SELECT * FROM usuarios WHERE nombreUsuario = '$usuario'";
-          $resConsulta = consultaSql($consulta);
-          if($resConsulta){
-            $filaUsuario = mysqli_fetch_assoc($resConsulta);
-            ?>
-            <h3>Email: <?php echo $filaUsuario['nombreUsuario']?> </h3>
-                <?php 
-                $codigoCliente = $filaUsuario['idUsuario'];
-                $consultaPromociones = "SELECT * FROM uso_Promociones WHERE codigoCliente = '$codigoCliente'";
-                $resConsulta = consultaSql($consultaPromociones);
-                if($resConsulta){
-                    $cantidadPromociones = mysqli_num_rows($resConsulta);
-                    if($cantidadPromociones >= 3 && $cantidadPromociones <= 6){
-                       $consulta = "UPDATE usuarios SET categoriaCliente = 'Medium' WHERE idUsuario = '$codigoCliente'";
-                       $resConsulta = consultaSql($consulta);
-                    }
-                    else if($cantidadPromociones > 6){
-                        $consulta = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE idUsuario = '$codigoCliente'";
-                        $resConsulta = consultaSql($consulta);
-                    }
-                }
 
-                
-            ?>
-            <h3>Categoria Actual: <?php echo $filaUsuario['categoriaCliente'];?></h3>
-            <?php 
-                if($filaUsuario['categoriaCliente'] != 'Premium'){
+<main>
+    <h1>Ingresa los datos de la nueva promocion</h1>
+    <form action="" method="post">
+            <label for="textoPromocion">Descripcion:</label>
+            <input type="text" name="texto" required>
+            <label for="FechaDesde">FechaDesde:</label>
+            <input type="date" name="desde"required >
+            <label for="FechaHasta">FechaHasta:</label>
+            <input type="date" name="hasta" required>
+            <label for="textoPromocion">CategoriaCliente:</label>
+            <select name="categoriaCliente" required>
+                <option value="Inicial">Inicial</option>
+                <option value="Medium">Medium</option>
+                <option value="Premium">Premium</option>
+            </select>
+            <label for="dias que aplica">Dias que aplica: </label>
+            <select name="dias[]" multiple required>
+                <option value="0">Domingo</option>
+                <option value="1">Lunes</option>
+                <option value="2">Martes</option>
+                <option value="3">Miercoles</option>
+                <option value="4">Jueves</option>
+                <option value="5">Viernes</option>
+                <option value="6">Sabado</option>
+            </select>
+            <label for="codigoLocal">Tu local: </label>
+            <input type="number" name="codLocal" required>
+            <button type="submit">Crear Promocion</button>
+    </form>
+<a href="promociones.php" id="linkAPromos">Ir a promociones</a>
+</main>
+<?php 
+    if(isset($_POST['texto'])&& isset($_POST['desde']) && isset($_POST['hasta'])&& isset($_POST['categoriaCliente'])&& isset($_POST['dias'])
+         && isset($_POST['codLocal'])){
+        $codLocal = $_POST['codLocal'];
+        $consulta = "SELECT * FROM locales WHERE codigoLocal = '$codLocal'";
+        $res = consultaSql($consulta);
+        if(mysqli_num_rows($res) == 0){
+            echo "<h1> No existe ese local. Ingresa de nuevo tus datos! </h1>";
+        }else{
+        $text = $_POST['texto'];
+        $desde = $_POST['desde'];
+        $hasta = $_POST['hasta'];
+        $catCliente = $_POST['categoriaCliente'];
+        $dias = $_POST['dias'];
+        $diasString = implode(',',$dias);
+        $idDueño = $_SESSION['id'];
+        $consulta = "INSERT INTO promociones (texto,fechaDesde,fechaHasta,categoriaCliente,estado,codigoLocal,diaSemana,confirmado)
+            VALUES ('$text','$desde','$hasta','$catCliente','sinSolicitar','$codLocal','$diasString',0)";
+        $res = consultaSql($consulta);
+        echo "<h1> Promocion creada Correctamente! </h1>";
+        header("Location: promociones.php");
 
-                    ?>
-                    <label for="Progeso">Progeso hacia Premium</label>
-                <progress max="10" <?php echo "value= '$cantidadPromociones'"?>></progress>
-               <?php  }?>
-            
-        <?php  }?>
-    </div>
-
-</section>
-      
+    }}
+?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    
+
 </body>
 </html>

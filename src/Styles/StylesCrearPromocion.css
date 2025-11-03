@@ -1,0 +1,68 @@
+:root{
+    --negro: #000000;
+    --azul: #14213D;
+    --amarillo: #fca311;
+    --gris : #e5e5e5;
+    --blanco: #fff;
+}
+*{
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--azul);
+}
+main{
+    margin: 30px auto;
+    padding: 20px;
+    border: 5px solid var(--amarillo);
+    background-color: var(--gris);
+    width: 60vw;
+}
+main > h1{
+    text-align: center;
+    color: var(--azul);
+    text-decoration: underline;
+}
+main > form{
+    display: flex;
+    flex-direction: column;
+}
+main > form > input{
+    border-radius: 10px;
+    border: 3px solid var(--azul);
+}
+main > form > button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(--amarillo);
+    border-radius: 20px;
+    background-color: var(--blanco);
+    color: var(--negro);
+    margin: 20px auto;
+    padding: 10px;
+    width: 30vw;
+    font-size: 1.7vw;
+}
+main > form > button:hover{
+    background-color: var(--azul) ;
+    color: var(--amarillo);
+    text-decoration: underline;
+}
+#linkAPromos{
+    margin-top: 20px;
+    padding: 10px;
+    color: var(--negro);
+    border: 3px solid var(--amarillo);
+    border-radius: 20px;
+    background-color: var(--blanco);
+    font-size: 1.7vw;
+}
+#linkAPromos:hover{
+    background-color: var(--azul) ;
+    color: var(--amarillo); 
+}

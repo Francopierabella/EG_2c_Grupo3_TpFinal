@@ -1,0 +1,112 @@
+:root{
+    --negro: #000000;
+    --azul: #274179;
+    --amarillo: #fca311;
+    --gris : #e5e5e5;
+    --blanco: #fff;
+}
+*{
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--azul);
+}
+main{
+    margin: 0;
+
+}
+main > #panel{
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+    margin: 30px auto;
+}
+#gestion {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.card{
+    margin: 100px auto;
+}
+.card-body{
+    background-color: var(--gris);
+    border: 5px solid var(--amarillo);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.card-body > h3{
+    text-align: center;
+    font-size: 3vw;
+    padding-bottom: 10px;
+    text-decoration: underline;
+}
+.card-body > .botones{
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-body > .botones > a{
+    color: var(--negro);
+    border: 3px solid var(--amarillo);
+    border-radius: 10px;
+    background-color: var(--blanco);
+    padding: 10px;
+    margin: 20px auto;
+    width: 100px;
+    text-align: center;
+}
+
+.card-body > .botones > a:hover{
+    background-color: #14213D;
+    color: var(--amarillo);
+    text-decoration: underline;
+}
+#solicitudes{
+    margin-top: 100px;
+}
+table {
+    margin-bottom: 300px;
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+   }
+
+thead > tr {
+    background-color: var(--negro);
+    color: var(--blanco);
+    border: 3px solid black;
+
+}
+thead > tr > th{
+    border-right: 3px solid var(--blanco);
+    text-align: center;
+    text-decoration: underline;
+}
+td{
+    background-color: white;
+    border: 3px solid black;
+    text-align: center;
+}
+form > button{
+    border-radius: 100%;
+    background-color: var(--negro);
+}
+#aprobar{
+    background-color: rgb(0, 255, 0);
+}
+#aprobar:hover{
+    background-color: rgb(0, 200, 0);
+}
+
+#rechazar:hover{
+    background-color: #222223;
+}

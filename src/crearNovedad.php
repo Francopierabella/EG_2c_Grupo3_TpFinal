@@ -1,17 +1,17 @@
 <?php 
 session_start();
 include "consultaSql.php";
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="Styles/StylesPerfilDueño.css?v=1.0">
     <link rel="stylesheet" href="Styles/StylesHeader.css?v=1.0">
-    <title>Tu Perfil</title>
+    <link rel="stylesheet" href="Styles/StylesCrearNovedad.css">
+    <title>Crear Novedad</title>
 </head>
 <body>
     <header>
@@ -28,7 +28,7 @@ include "consultaSql.php";
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Inicio</a>
+                    <a class="nav-link" aria-current="page" href="inicio.php">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="promociones.php">Promociones</a>
@@ -42,7 +42,7 @@ include "consultaSql.php";
             </ul>
             <div class="d-none d-sm-flex ms-auto">
             <?php 
-                    echo '<a href="perfilDueño.php" class="btn btn-outline-primary me-2" id="botonLogin" >Perfil</a>'; 
+                    echo '<a href="perfilAdministrador.php" class="btn btn-outline-primary me-2" id="botonLogin" >Perfil</a>'; 
                     echo '<a href="cerrarSesion.php" class="btn btn-outline-primary me-2" id="botonLogin" >Cerrar sesion </a>';
 
             ?>
@@ -56,49 +56,47 @@ include "consultaSql.php";
             </div>
          </div>
         </nav>
-    </header>
-  <section id="datosLocal">
-      <div class="container"> 
-        <?php 
-        $idDueño = $_SESSION['id'];
-        $consultaLocales = "SELECT * FROM locales WHERE codUsuario = '$idDueño'";
-        $resultadoConsulta = consultaSql($consultaLocales);
-        if(mysqli_num_rows($resultadoConsulta) == 0){
-            ?>
-        <h1> No tienes Locales Cargados!</h1>
-        <?php  }else{
-
-            ?>
-        <h1>Tus locales</h1>
-        <table>  
-            <thead>
-              <tr>
-                <th scope="col">CodigoLocal</th>
-                <th scope="col">NombreLocal</th>
-                <th scope="col">Ubicacion</th>
-                <th scope="col">Rubro</th>
-              </tr>
-            </thead>
-            <?php
-             while($local = mysqli_fetch_array($resultadoConsulta)){
-            ?>
-            <tr>
-                <td><?= $local["codigoLocal"] ?></td>
-                <td><?= $local["nombre"] ?></td>
-                <td><?= $local["ubicacion"] ?></td>
-                <td><?= $local['rubro']?></td>
-            </tr>
-            <?php
+    </header> 
+<main>
+    <h1>Crea un nuevo novedad!</h1>
+    <form action="" method="post">
+        <label for="titulo">Titulo </label>
+        <input type="text" name="titulo" required>
+        <label for="texto">Descripcion: </label>
+        <input type="text" name="texto" required>
+        <label for="desde">FechaDesde </label>
+        <input type="date" name="desde" required>
+        <label for="hasta">fechaHasta </label>
+        <input type="date" name="hasta" required>
+        <label for="tipoUsuario">
+            <select name="tipo"required >
+                <option value="Inicial">Inicial</option>
+                <option value="Medium">Medium</option>
+                <option value="Premium">Premium</option>
+            </select>
+        </label>
+        <button type="submit"> Crear novedad</button>
+    </form>
+</main>
+<?php 
+    if(isset($_POST['titulo']) &&
+        isset($_POST['texto']) && 
+        isset($_POST['desde']) &&
+        isset($_POST['hasta']) &&
+        isset($_POST['tipo'])){
+            $titulo = $_POST['titulo'];
+            $texto = $_POST['texto'];
+            $desde = $_POST['desde'];
+            $hasta = $_POST['hasta'];
+            $tipo = $_POST['tipo'];
+            $consulta = "INSERT INTO novedades (titulo,texto,fechaDesde,fechaHasta,tipoUsuario) 
+                VALUES ('$titulo','$texto','$desde','$hasta','$tipo')";
+                $resConsulta = consultaSql($consulta);
+            echo "<br>";
+            echo "<h1 style='text-align:center; margin: 20px auto; color: var(--blanco);' >Novedad Creada Con exito! </h1>";
         }
-        echo "</table>";
-            ?>
-       <?php }?>
-    </div>
-  </section>
-  <section id="solicitudes">
-    
+?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
-  </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
